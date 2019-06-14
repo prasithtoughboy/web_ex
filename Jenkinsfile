@@ -1,6 +1,6 @@
 // Obtaining an Artifactory server instance defined in Jenkins:
 			
-def server = Artifactory.server 'Artifactory Version 4.15.0'
+def server = Artifactory.server 'vvdn_cicd_jfrog_artifactory'
 
 		 //If artifactory is not defined in Jenkins, then create on:
 		// def server = Artifactory.newServer url: 'Artifactory url', username: 'username', password: 'password'
@@ -21,18 +21,18 @@ pipeline {
     stages {
         stage('Clone sources'){
             steps {
-                git url: 'https://github.com/Anusha-DevOp/web_ex'
+                git url: 'https://github.com/prasithtoughboy/web_ex'
             }
         }
 
-     	stage('SonarQube analysis') {
-	     steps {
-		//Prepare SonarQube scanner enviornment
-		withSonarQubeEnv('SonarQube6.3') {
-		   bat 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.3.0.603:sonar'
-		}
-	      }
-	}
+//     	stage('SonarQube analysis') {
+//	     steps {
+//		//Prepare SonarQube scanner enviornment
+//		withSonarQubeEnv('SonarQube6.3') {
+//		   bat 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.3.0.603:sonar'
+//		}
+//	      }
+//	}
 
 //	stage('Quality Gate') {
 //		steps {
